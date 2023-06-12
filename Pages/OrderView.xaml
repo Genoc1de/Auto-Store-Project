@@ -1,0 +1,75 @@
+﻿<Page x:Class="Auto_Store_Project.Pages.OrderView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Auto_Store_Project.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="Заказ">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Пункт Выдачи: " HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"></TextBlock>
+        <ComboBox Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Height="30" Width="150" Name="PickUpPointsCB" DisplayMemberPath="Name"></ComboBox>
+        <ListView Name="ListProductsInOrder" Grid.Row="1" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel>
+
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="black" BorderThickness="1">
+                        <Grid Height="150" Width="900">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding Products.ImageView}" Grid.Row="0" Grid.RowSpan="5"></Image>
+                            <TextBlock Text="{Binding Products.Name}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding Products.Description}" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding Products.Manufacturer.Name}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding Products.Price}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding Products.DiscountView}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"></TextBlock>
+                            <UniformGrid Grid.Row="0" Grid.Column="2" Grid.RowSpan="5" Rows="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Button Content="+" Name="PLusQuantity" Click="PLusQuantity_Click"></Button>
+                                <TextBlock Text="{Binding QuantityProductsInOrder}"></TextBlock>
+                                <Button Content="-" Name="MinusQuantity" Click="MinusQuantity_Click"></Button>
+                            </UniformGrid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <UniformGrid Grid.Row="2">
+            <TextBlock Text="Общая сумма скидки: " VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+            <TextBlock Text="" Name="TotalDiscount" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+        </UniformGrid>
+        <UniformGrid Grid.Row="2" Grid.Column="1">
+            <TextBlock Text="Общая сумма Заказа: " VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+            <TextBlock Text="" Name="TotalPrice" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+        </UniformGrid>
+        <Button Grid.ColumnSpan="2" Grid.Row="3" Width="200" Content="Сформировать Заказ" Name="FormOrder" Click="FormOrder_Click"></Button>
+
+    </Grid>
+</Page>

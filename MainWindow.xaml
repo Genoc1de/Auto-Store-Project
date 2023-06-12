@@ -1,0 +1,21 @@
+﻿<Window x:Class="Auto_Store_Project.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Auto_Store_Project"
+        mc:Ignorable="d"
+        Title="АвтоМагазин Руль" Height="600" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="0" Fill="LightBlue"></Rectangle>
+        <TextBlock Grid.Row="0" Text="АвтоМагазин Руль" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontWeight="Light"></TextBlock>
+        <Button Content="Назад" Grid.Row="0" Height="50" Width="100" FontSize="20" HorizontalAlignment="Right" Name="BtnBack" Click="BtnBack_Click"></Button>
+        <Frame Name="MainFrame" Grid.Row="1" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden"></Frame>
+        <Rectangle Grid.Row="2" Fill="LightBlue"></Rectangle>
+    </Grid>
+</Window>
